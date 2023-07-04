@@ -7,11 +7,14 @@ export default function NavBar() {
           {/* The link tag is used for single page application navigation - client side navigation 
               replace with a tag for server side navigation
               */}
-          <Link className="text-orange-800 hover:underline" href="/">
-            Home
+          <Link
+            className="font-orbitron font-bold text-orange-800 hover:underline"
+            href="/"
+          >
+            Indie Gamer
           </Link>
         </li>
-        <li>
+        <li className="ml-auto">
           <Link className="text-orange-800 hover:underline" href="/reviews">
             Reviews
           </Link>
