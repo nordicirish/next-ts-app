@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import "./globals.css";
 import Link from "next/link";
 interface LayoutProps {
   children: ReactNode;
