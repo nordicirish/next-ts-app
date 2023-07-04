@@ -19,7 +19,7 @@ export default function RootLLayout({ children }: LayoutProps) {
               <Link href="/reviews">Reviews</Link>
             </li>
             <li>
-              {/* default behaviour is to prefect links for faster
+              {/* default build behaviour is to prefetch links for faster
               user experience but if a page is large or seldom accessed
               the prefetch prop can be set to false */}
               <Link href="/about" prefetch={false}>
@@ -29,7 +29,13 @@ export default function RootLLayout({ children }: LayoutProps) {
           </ul>
         </header>
         <main>{children}</main>
-        <footer>[footer]</footer>
+        {/* no need to use link for external links */}
+        <footer>
+          Game data and images courtesy of{" "}
+          <a href="https://rawg.io/" target="_blank">
+            RAWG
+          </a>
+        </footer>
       </body>
     </html>
   );
