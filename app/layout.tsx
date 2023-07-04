@@ -19,7 +19,12 @@ export default function RootLLayout({ children }: LayoutProps) {
               <Link href="/reviews">Reviews</Link>
             </li>
             <li>
-              <Link href="/about">About</Link>
+              {/* default behaviour is to prefect links for faster
+              user experience but if a page is large or seldom accessed
+              the prefetch prop can be set to false */}
+              <Link href="/about" prefetch={false}>
+                About
+              </Link>
             </li>
           </ul>
         </header>
