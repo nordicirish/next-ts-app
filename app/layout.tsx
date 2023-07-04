@@ -1,13 +1,14 @@
 import type { ReactNode } from "react";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
-import { orbitron } from "./fonts";
+import { orbitron, exo2 } from "./fonts";
 interface LayoutProps {
   children: ReactNode;
 }
 export default function RootLLayout({ children }: LayoutProps) {
   return (
-    <html lang="en" className={orbitron.variable}>
+    // import custom fonts
+    <html lang="en" className={`${exo2.variable} ${orbitron.variable}`}>
       <body className="bg-orange-50 flex flex-col px-4 py-2 min-h-screen">
         <header>
           <NavBar />
