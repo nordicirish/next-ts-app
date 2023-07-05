@@ -19,6 +19,10 @@ export async function getReview(slug: string): Promise<Review> {
   const body = marked(content, { headerIds: false, mangle: false });
   return { slug, title, date, image, body };
 }
+export async function getFeaturedReview(): Promise<Review> {
+  const reviews = await getReviews();
+  return reviews[0];
+}
 
 export async function getReviews(): Promise<Review[]> {
   const slugs = await getSlugs();
@@ -27,6 +31,8 @@ export async function getReviews(): Promise<Review[]> {
     const review = await getReview(slug);
     reviews.push(review);
   }
+  // sort reviews by newest first
+  reviews.sort((a, b) => b.date.localeCompare(a.date));
   return reviews;
 }
 
