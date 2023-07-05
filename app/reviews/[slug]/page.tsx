@@ -1,8 +1,10 @@
 import { getReview } from "@/lib/reviews";
 import Heading from "@/components/Heading";
 import ReviewImage from "@/components/ReviewImage";
-export default async function StardewValleyPage() {
-  const review = await getReview("stardew-valley");
+// dynamic routes
+// loads a different file dependent on the url end slug
+export default async function ReviewPage({ params: { slug } }) {
+  const review = await getReview(slug);
   return (
     <>
       <Heading>{review.title}</Heading>
