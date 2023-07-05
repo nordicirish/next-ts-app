@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+import matter from "gray-matter";
 import { marked } from "marked";
 import Heading from "@/components/Heading";
 import ReviewImage from "@/components/ReviewImage";
@@ -7,11 +8,17 @@ import ReviewImage from "@/components/ReviewImage";
 export default async function StardewValleyPage() {
   const text = await readFile("./content/reviews/stardew-valley.md", "utf-8");
   // disable terminal log depreceated warnings for now
-  const html = marked(text, { headerIds: false, mangle: false });
+  // extract content and data first
+  const {
+    content,
+    data: { title, date, image },
+  } = matter(text);
+  const html = marked(content, { headerIds: false, mangle: false });
   return (
     <>
-      <Heading>Stardew Valley</Heading>
-      <ReviewImage>/images/stardew-valley.jpg</ReviewImage>
+      <Heading>{title}</Heading>
+      <p className="italic pb-2">{date}</p>
+      <ReviewImage>{image}</ReviewImage>
       {/* tailwind className prose formats html */}
       <article
         className="max-w-screen-sm prose prose-slate"
