@@ -11,6 +11,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/typography"),
+    // ... formats external html imports
+  ],
 };
 //  remove unused filetypes to let tailwind faster
