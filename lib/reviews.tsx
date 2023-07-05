@@ -19,18 +19,24 @@ export async function getReview(slug: string): Promise<Review> {
   const body = marked(content, { headerIds: false, mangle: false });
   return { slug, title, date, image, body };
 }
-export async function getReviews() {
-  const files = await readdir("./content/reviews");
-  // exclude files that don't end in .md
-  const slugs = files
-    .filter((file) => file.endsWith(".md"))
-    // slice from start of file name to beginning of .md
-    .map((file) => file.slice(0, -".md".length));
-  console.log(slugs);
+
+export async function getReviews(): Promise<Review[]> {
+  const slugs = await getSlugs();
   const reviews: Review[] = [];
   for (const slug of slugs) {
     const review = await getReview(slug);
     reviews.push(review);
   }
   return reviews;
+}
+
+export async function getSlugs(): Promise<string[]> {
+  const files = await readdir("./content/reviews");
+  return (
+    files
+      //   exclude files that don't end in md
+      .filter((file) => file.endsWith(".md"))
+      // return slug without .md
+      .map((file) => file.slice(0, -".md".length))
+  );
 }

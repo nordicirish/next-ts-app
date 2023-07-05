@@ -1,16 +1,28 @@
-import { getReview } from "@/lib/reviews";
+import { getReview, getSlugs } from "@/lib/reviews";
 import Heading from "@/components/Heading";
 import ReviewImage from "@/components/ReviewImage";
 // dynamic routes
 // loads a different file dependent on the url end slug
+interface ReviewPageParams {
+  slug: string;
+}
+
 interface ReviewPageProps {
-  params: { slug: string };
+  params: ReviewPageParams;
+}
+
+// static site route generation at build time
+export async function generateStaticParams(): Promise<ReviewPageParams[]> {
+  const slugs = await getSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default async function ReviewPage({
   params: { slug },
 }: ReviewPageProps) {
   const review = await getReview(slug);
+
+  console.log("[ReviewPage] rendering", slug);
   return (
     <>
       <Heading>{review.title}</Heading>
