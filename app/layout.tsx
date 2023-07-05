@@ -15,7 +15,7 @@ export default function RootLLayout({ children }: LayoutProps) {
         </header>
         <main className="grow py-4">{children}</main>
         {/* no need to use link for external links */}
-        <footer className="border-t py-3 text-center text-xs">
+        <footer className="border-t py-3 text-center text-xs text-slate-500">
           Game data and images courtesy of{" "}
           <a
             className="text-orange-800 hover:underline"

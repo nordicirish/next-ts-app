@@ -12,7 +12,11 @@ export default async function StardewValleyPage() {
     <>
       <Heading>Stardew Valley</Heading>
       <ReviewImage>/images/stardew-valley.jpg</ReviewImage>
-      <article dangerouslySetInnerHTML={{ __html: html }} />
+      {/* tailwind className prose formats html */}
+      <article
+        className="max-w-screen-sm prose prose-slate"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
       {/* need to pass html as prop as react escapes html tags as a security feature <p>{html}</p> */}
     </>
   );
