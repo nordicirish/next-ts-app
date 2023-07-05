@@ -3,7 +3,13 @@ import Heading from "@/components/Heading";
 import ReviewImage from "@/components/ReviewImage";
 // dynamic routes
 // loads a different file dependent on the url end slug
-export default async function ReviewPage({ params: { slug } }) {
+interface ReviewPageProps {
+  params: { slug: string };
+}
+
+export default async function ReviewPage({
+  params: { slug },
+}: ReviewPageProps) {
   const review = await getReview(slug);
   return (
     <>
