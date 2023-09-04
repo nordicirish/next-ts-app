@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
@@ -5,6 +6,11 @@ import { orbitron, exo2 } from "./fonts";
 interface LayoutProps {
   children: ReactNode;
 }
+// sets default metadata template: %s | Indie Gamer allows individual pages to have their own title
+export const metadata: Metadata = {
+  title: { default: "Indie Gamer", template: "%s | Indie Gamer" },
+  description: "Only the best indie games, reviewed for you.",
+};
 export default function RootLLayout({ children }: LayoutProps) {
   return (
     // import custom fonts

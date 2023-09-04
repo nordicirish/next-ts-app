@@ -1,14 +1,11 @@
 // paths configured in tsconfig.json
 // @ replaces relative file paths
-import type { Metadata } from "next";
+
 import Heading from "@/components/Heading";
 import Link from "next/link";
 import { getFeaturedReview } from "@/lib/reviews";
 // need to export metadata
-export const metadata: Metadata = {
-  title: "Indie Gamer",
-  description: "Only the best indie games, reviewed for you.",
-};
+
 export default async function HomePage() {
   const review = await getFeaturedReview();
   return (
