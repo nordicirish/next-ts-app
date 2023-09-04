@@ -1,4 +1,5 @@
-"use client";
+// "use client";
+// use client directive not necessary as imported as a child component of ShareButtons that is rendered on the client
 import { useState } from "react";
 // use client directive ensure that the component executes on the client side
 // hydration component is rendered on client and server but functions are executed on the client

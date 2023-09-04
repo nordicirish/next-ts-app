@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { getReview, getSlugs } from "@/lib/reviews";
 import Heading from "@/components/Heading";
 import ReviewImage from "@/components/ReviewImage";
-import ShareLinkButton from "@/components/ShareLinkButton";
+import ShareButtons from "@/components/ShareButtons";
 // dynamic routes
 // loads a different file dependent on the url end slug
 interface ReviewPageParams {
@@ -40,7 +40,7 @@ export default async function ReviewPage({
       <Heading>{review.title}</Heading>
       <div className="flex gap-3 items-baseline">
         <p className="italic pb-2">{review.date}</p>
-        <ShareLinkButton />
+        <ShareButtons />
       </div>
 
       <ReviewImage>{review.image}</ReviewImage>
