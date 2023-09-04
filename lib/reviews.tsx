@@ -16,6 +16,7 @@ export async function getReview(slug: string): Promise<Review> {
     content,
     data: { title, date, image },
   } = matter(text);
+  // remove error messages for outdated dependencies from console
   const body = marked(content, { headerIds: false, mangle: false });
   return { slug, title, date, image, body };
 }
@@ -40,7 +41,7 @@ export async function getSlugs(): Promise<string[]> {
   const files = await readdir("./content/reviews");
   return (
     files
-      //   exclude files that don't end in md
+      //   exclude files that don't end in .md
       .filter((file) => file.endsWith(".md"))
       // return slug without .md
       .map((file) => file.slice(0, -".md".length))
