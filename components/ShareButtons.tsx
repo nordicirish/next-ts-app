@@ -5,7 +5,7 @@ import ShareLinkButton from "./ShareLinkButton";
 
 export default function ShareButtons() {
   return (
-    <div>
+    <div className="flex gap-3">
       <ShareLinkButton /> | [Twitter] | [Facebook]
     </div>
   );
