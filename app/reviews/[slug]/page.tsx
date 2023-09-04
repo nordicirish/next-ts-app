@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getReview, getSlugs } from "@/lib/reviews";
 import Heading from "@/components/Heading";
 import ReviewImage from "@/components/ReviewImage";
@@ -9,6 +10,17 @@ interface ReviewPageParams {
 
 interface ReviewPageProps {
   params: ReviewPageParams;
+}
+
+export async function generateMetadata({
+  //destructure props
+  params: { slug },
+}: ReviewPageProps): Promise<Metadata> {
+  //load review data
+  const review = await getReview(slug);
+  return {
+    title: review.title,
+  };
 }
 
 // static site route generation at build time
